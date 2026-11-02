@@ -226,6 +226,21 @@
             line-height: 1.9;
         }
 
+                .demo-text {
+            margin: 0;
+            font-family: var(--serif);
+            font-size: 20px;
+            line-height: 1.9;
+        }
+
+        .demo-step {
+            margin: 20px 0 6px;
+        }
+
+        .demo-step:first-child {
+            margin-top: 0;
+        }
+
         .demo-arrow {
             margin: 18px 0;
             color: var(--blue);
@@ -635,15 +650,18 @@
 
                 <section id="instructions-container" style="display: none;">
                     <h2 class="box box-green">How the task works</h2>
-                                        <figure class="demo" aria-hidden="true">
+                                             <div class="box box-blue">
+                        <p>There is no time limit in this experiment. Read at your normal pace and make sure you understand the whole passage, since you will be asked a question about it. Here is an example that walks through the experiment.</p>
+                    </div>
+
+                    <figure class="demo" aria-hidden="true">
+                        <p class="demo-step">Each passage starts out hidden, with every word shown as a dashed line:</p>
                         <p class="demo-text"><span class="word">Every</span> <span class="word">summer,</span> <span class="word">my</span> <span class="word">uncle</span> <span class="word masked">grows</span> <span class="word masked">tomatoes</span> <span class="word masked">in</span> <span class="word masked">his</span> <span class="word masked">small</span> <span class="word masked">garden.</span></p>
 
-                        <p class="demo-arrow">&darr; After pressing <kbd>Space</kbd>, the following text will be revealed &darr;</p>
-
+                        <p class="demo-step">Press <kbd>Space</kbd> to show the next word. Words stay on screen once they appear, so the passage fills in as you read:</p>
                         <p class="demo-text">Every summer, my uncle grows tomatoes in his small garden.</p>
 
-                        <p class="demo-arrow">&darr; You should then answer the following question &darr;</p>
-
+                        <p class="demo-step">After the last word, press <kbd>Space</kbd> once more and the passage will disappear. You will then be asked a multiple-choice question about what you have read. Click the answer you think is correct, then click <strong>Continue</strong>:</p>
                         <p class="question-text demo-question">What does the uncle grow in his garden?</p>
                         <div class="options demo-options">
                             <div class="option-btn">Carrots</div>
@@ -652,17 +670,9 @@
                             <div class="option-btn">Strawberries</div>
                         </div>
                     </figure>
-                    <div class="box box-blue">
-                        <ol class="steps">
-                            <li>Each passage starts out hidden, with every word shown as a dashed line, like the example above.</li>
-                            <li>Press <kbd>Space</kbd> to show the next word. Words stay on screen once they appear, so the passage fills in as you read.</li>
-                            <li>There is no time limit and no need to rush. Read at your normal pace and make sure you understand the whole passage since you'll be asked a question about it.</li>
-                            <li>After the last word, press <kbd>Space</kbd> once more. The passage disappears.</li>
-                            <li>A multiple-choice question about the passage appears, with 4 possible answers. Click the answer you think is correct, then click <strong>Continue</strong>.</li>
-                        </ol>
-                    </div>
+
                     <div class="box box-ochre">
-                        <p>You'll start with <span class="n-practice">3</span> practice passages. During practice, you'll see whether your answer was correct.</p>
+                        <p>You'll start with <span class="n-practice">3</span> practice passages before the real experiment begins. During practice, you'll see whether your answer was correct.</p>
                     </div>
                     <div class="actions">
                         <button class="continue-btn" id="start-practice-btn">Start practice</button>
