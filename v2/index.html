@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light">
-    <title>Human Reading Time Experiment</title>
+    <title>Reading Comprehension Experiment</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -224,6 +224,29 @@
             font-family: var(--serif);
             font-size: 20px;
             line-height: 1.9;
+        }
+
+        .demo-arrow {
+            margin: 18px 0;
+            color: var(--blue);
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .demo-question {
+            font-size: 16px;
+        }
+
+        .demo-options .option-btn {
+            cursor: default;
+            font-size: 15px;
+            padding-top: 9px;
+            padding-bottom: 9px;
+        }
+
+        .demo-options .option-btn::before {
+            margin: -9px 0;
         }
 
         .passage {
@@ -504,7 +527,7 @@
     <div class="page">
         <div class="sheet">
             <header class="page-head">
-                <h1 class="page-title">Human Reading Time Experiment</h1>
+                <h1 class="page-title">Reading Comprehension Experiment</h1>
                 <span class="page-progress" id="progress"></span>
             </header>
 
@@ -612,14 +635,28 @@
 
                 <section id="instructions-container" style="display: none;">
                     <h2 class="box box-green">How the task works</h2>
-                    <figure class="demo" aria-hidden="true">
+                                        <figure class="demo" aria-hidden="true">
                         <p class="demo-text"><span class="word">Every</span> <span class="word">summer,</span> <span class="word">my</span> <span class="word">uncle</span> <span class="word masked">grows</span> <span class="word masked">tomatoes</span> <span class="word masked">in</span> <span class="word masked">his</span> <span class="word masked">small</span> <span class="word masked">garden.</span></p>
+
+                        <p class="demo-arrow">&darr; After pressing <kbd>Space</kbd>, the following text will be revealed &darr;</p>
+
+                        <p class="demo-text">Every summer, my uncle grows tomatoes in his small garden.</p>
+
+                        <p class="demo-arrow">&darr; You should then answer the following question &darr;</p>
+
+                        <p class="question-text demo-question">What does the uncle grow in his garden?</p>
+                        <div class="options demo-options">
+                            <div class="option-btn">Carrots</div>
+                            <div class="option-btn selected">Tomatoes</div>
+                            <div class="option-btn">Sunflowers</div>
+                            <div class="option-btn">Strawberries</div>
+                        </div>
                     </figure>
                     <div class="box box-blue">
                         <ol class="steps">
                             <li>Each passage starts out hidden, with every word shown as a dashed line, like the example above.</li>
                             <li>Press <kbd>Space</kbd> to show the next word. Words stay on screen once they appear, so the passage fills in as you read.</li>
-                            <li>Read at your normal pace, the way you usually read, and make sure you understand what you're reading.</li>
+                            <li>There is no time limit and no need to rush. Read at your normal pace and make sure you understand the whole passage since you'll be asked a question about it.</li>
                             <li>After the last word, press <kbd>Space</kbd> once more. The passage disappears.</li>
                             <li>A multiple-choice question about the passage appears, with 4 possible answers. Click the answer you think is correct, then click <strong>Continue</strong>.</li>
                         </ol>
