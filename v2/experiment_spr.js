@@ -1,4 +1,4 @@
-const DESIGN = 'all_versions';
+const DESIGN = 'excel_pairs';
 
 const INCLUDE_FILLERS = true;
 
@@ -171,7 +171,7 @@ function makeExperimentalTrial(row) {
     };
     addRegion(row.global_context, 'global');
     addRegion(row.local_context, 'local');
-    addRegion(row.target_word + '.', 'target');
+    addRegion(row.target_display || (row.target_word + '.'), 'target');
     addRegion(row.buffer_sentence, 'buffer');
     return {
         id: `${row.item_id}_${row.condition}`,
@@ -200,7 +200,25 @@ function getListIndex() {
     return n;
 }
 
+function checkExcelPairs(rows) {
+    const byItem = {};
+    rows.forEach(r => { (byItem[r.item_id] = byItem[r.item_id] || []).push(r); });
+    Object.entries(byItem).forEach(([id, rs]) => {
+        const sameStory = rs.length === 2 && rs[0].global_related === rs[1].global_related;
+        const samePerson = rs.length === 2 && rs[0].local_related === rs[1].local_related;
+        if (rs.length !== 2 || sameStory || !samePerson) {
+            throw new Error(`Item ${id} must have exactly two passages: the same person in two different stories ` +
+                            `(found ${rs.map(r => r.condition).join(', ')}). Re-run excel_to_stimuli.py.`);
+        }
+    });
+    return rows.slice();
+}
+
 function selectExperimentalRows() {
+
+        if (DESIGN === 'excel_pairs') {
+        return checkExcelPairs(EXPERIMENT_ITEMS);
+    }
     if (DESIGN === 'all_versions') {
         return EXPERIMENT_ITEMS.slice();
     }
